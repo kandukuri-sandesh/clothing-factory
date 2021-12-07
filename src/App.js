@@ -6,14 +6,50 @@ import {Router,Route,Routes,Link,useParams} from "react-router-dom";
 import Shop from "./Pages/Shop/shoppage.component.jsx"
 import Header from './components/header/header.component';
 import SignInAndSignOutPage from './Pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import {auth,createUserProfileDocument} from "./firebase/firebase.utils";
 
 
 
-function App(){
-  return(
+class App extends Component{
+  constructor(){
+   super()
+
+   this.state = {currentUser:null}
+
+  }
+
+ unSubscribeFromAuth = null
+  
+  componentDidMount(){
+    this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if(userAuth){
+      const userRef = await createUserProfileDocument(userAuth);
+      userRef.onSnapshot(Snapshot => {
+        const {displayName,email} = Snapshot.data();
+
+        this.setState({currentUser:{
+          id:Snapshot.id,
+          displayName,
+          email
+        }},()=> console.log(this.state) )
+      })
+      
+      } 
+      this.setState({currentUser:userAuth})
+  });
+  }
+
+  
+  componentWillUnmount(){
+    this.unSubscribeFromAuth();
+  }
+
+
+  render(){
+    return(
     <div>
     <nav>
-    <Header/>
+    <Header currentUser = {this.state.currentUser} />
     </nav>
     
     <Routes>
@@ -24,6 +60,7 @@ function App(){
     </div>
   
   )
-
+    }
+ 
 }
 export default App;
