@@ -31,7 +31,7 @@ class App extends Component{
           id:Snapshot.id,
           displayName,
           email
-        }},()=> console.log(this.state) )
+        }} )
       })
       
       } 
