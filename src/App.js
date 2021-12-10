@@ -7,35 +7,36 @@ import Shop from "./Pages/Shop/shoppage.component.jsx"
 import Header from './components/header/header.component';
 import SignInAndSignOutPage from './Pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import {auth,createUserProfileDocument} from "./firebase/firebase.utils";
-
+import {setCurrentUser} from "./redux/user/user.action.jsx";
+import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
+import {userActionTypes} from "./redux/user/user.types";
 
 
 class App extends Component{
-  constructor(){
-   super()
-
-   this.state = {currentUser:null}
-
-  }
+ 
 
  unSubscribeFromAuth = null
   
   componentDidMount(){
+    const {setCurrentUser} = this.props;
+
     this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
       const userRef = await createUserProfileDocument(userAuth);
-      userRef.onSnapshot(Snapshot => {
+      
+       userRef.onSnapshot(Snapshot => {
         const {displayName,email} = Snapshot.data();
-
-        this.setState({currentUser:{
+        
+        setCurrentUser({
           id:Snapshot.id,
           displayName,
           email
-        }} )
+        } )
       })
       
       } 
-      this.setState({currentUser:userAuth})
+        setCurrentUser(userAuth);
   });
   }
 
@@ -49,13 +50,13 @@ class App extends Component{
     return(
     <div>
     <nav>
-    <Header currentUser = {this.state.currentUser} />
+    <Header  />
     </nav>
     
     <Routes>
     <Route path ="/" element = {<HomePage/>} />
     <Route path ="/shop" element = {<Shop/>} />
-    <Route path = "/signIn" element = {<SignInAndSignOutPage/>}     />
+    <Route exact path = "/signIn" element = {this.props.currentUser? (<Navigate to="/" />) : <SignInAndSignOutPage/>} />
     </Routes>
     </div>
   
@@ -63,4 +64,13 @@ class App extends Component{
     }
  
 }
-export default App;
+
+const mapPropsToState = ({user}) => ({
+  currentUser : user.currentUser
+})
+
+const mapDispatchToState = (dispatch) => ({
+ setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+export default connect( mapPropsToState,mapDispatchToState) (App);
