@@ -4,10 +4,13 @@ import "./cart-dropdown-list.styles.scss"
 
 const CartDropdowList = ({obj}) => (
     
-        <div>
-        <div className ="image" style = {{backgroundImage:`url(${obj.imageUrl})`}} />
-        <h1>{obj.name}</h1>
-        <span>{obj.price}</span>
+        <div className = "cart-item"  >
+        <img src = {obj.imageUrl} alt ="item" className="item-image" />
+      
+        <div className = "item-details" >
+        <span>{obj.name}</span> <br/>
+        <span>{`${obj.quantity} x ${obj.price}$`}</span>
+        </div>
         </div>
     
 )

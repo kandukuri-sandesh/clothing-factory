@@ -1,7 +1,17 @@
-.image {
-        width: 100%;
-        height: 95%;
-        background-size: cover;
-        background-position: center;
-        margin-bottom: 5px;
-      }
+.cart-item{
+  display: flex;
+  
+  margin: 10px;
+}
+.item-image{
+  height: 80px;
+  width: 60px;
+}
+
+.item-details{
+  height: 80px;
+  width: 100px;
+  margin: 5px;
+  margin-left: 10px;
+  
+}      
