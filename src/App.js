@@ -11,6 +11,8 @@ import {setCurrentUser} from "./redux/user/user.action.jsx";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 import {userActionTypes} from "./redux/user/user.types";
+import { selectCurrentUser } from './redux/user/user.selector';
+import CheckoutPage from './Pages/CheckoutPage/checkoutPage.component';
 
 
 
@@ -58,6 +60,7 @@ class App extends Component{
     <Route path ="/" element = {<HomePage/>} />
     <Route path ="/shop" element = {<Shop/>} />
     <Route exact path = "/signIn" element = {this.props.currentUser? (<Navigate to="/" />) : <SignInAndSignOutPage/>} />
+    <Route path ="/checkoutpage" element = {<CheckoutPage/>} />
     </Routes>
     </div>
   
@@ -66,8 +69,8 @@ class App extends Component{
  
 }
 
-const mapPropsToState = ({user}) => ({
-  currentUser : user.currentUser
+const mapPropsToState = (state) => ({
+  currentUser : selectCurrentUser(state)
 })
 
 const mapDispatchToState = (dispatch) => ({

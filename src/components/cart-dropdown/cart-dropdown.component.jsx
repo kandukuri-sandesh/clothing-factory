@@ -3,23 +3,29 @@ import { connect } from "react-redux";
 import CustomButton from "../custom-button/custom-button.component";
 import "./cart-dropdown.styles.scss";
 import CartDropdowList from "../cart-dropdown-list/cart-dropdown-list.component";
-
+import { selectCartItems } from "../../redux/cart/cart.selectors";
 import CartReducer from "../../redux/cart/cart.reducer";
 import toggleCartHidden from "../../redux/cart/cart.actions"
+import { useLocation,useNavigate } from "react-router";
 
-const CartDropdown =({cart_Items})=>(
+
+const CartDropdown =({cart_Items})=>{
+  const location = useLocation();
+  const navigate = useNavigate();
+  return (
     <div className="cart-dropdown"  >
     <div className="cart-items">
     <div> 
-    {cart_Items.map(obj => <CartDropdowList obj = {obj}/> )}
+    {cart_Items.length? cart_Items.map(obj => <CartDropdowList key = {obj.id} obj = {obj}/>) : <h1>No Items in the Cart.</h1> }
     </div>
     </div>
-    <CustomButton>GO TO CHECKOUT</CustomButton>
+    <CustomButton onClick = {()=> navigate("/checkoutpage") } >GO TO CHECKOUT</CustomButton>
+    
     </div>
-)
+)}
 
-const mapStateToProps = ({cart:{cart_Items}}) => ({
-  cart_Items
+const mapStateToProps = (state) => ({
+  cart_Items:selectCartItems(state)
 })
 
 export default connect(mapStateToProps,null)(CartDropdown);

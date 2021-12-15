@@ -1,14 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./cart-dropdown-list.styles.scss"
+import "./cart-dropdown-list.styles.scss";
+
 
 const CartDropdowList = ({obj}) => (
     
         <div className = "cart-item"  >
         <img src = {obj.imageUrl} alt ="item" className="item-image" />
-      
+        
         <div className = "item-details" >
-        <span>{obj.name}</span> <br/>
+        <span>{obj.name,console.log("rendered")}</span> <br/>
         <span>{`${obj.quantity} x ${obj.price}$`}</span>
         </div>
         </div>
