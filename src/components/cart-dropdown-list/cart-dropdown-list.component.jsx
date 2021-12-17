@@ -9,7 +9,7 @@ const CartDropdowList = ({obj}) => (
         <img src = {obj.imageUrl} alt ="item" className="item-image" />
         
         <div className = "item-details" >
-        <span>{obj.name,console.log("rendered")}</span> <br/>
+        <span>{obj.name}</span> <br/>
         <span>{`${obj.quantity} x ${obj.price}$`}</span>
         </div>
         </div>

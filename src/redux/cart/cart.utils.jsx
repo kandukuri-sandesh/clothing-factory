@@ -12,4 +12,16 @@ const ItemAddition = (addedItem,itemToBeAdded) => {
     return [...addedItem,{...itemToBeAdded,quantity:1}]
 }
 
+export const ItemSubstruction = (addedItem,itemToBeSubstructed) => {
+    if(addedItem.find(item => item.id === itemToBeSubstructed.id)){
+         return (
+             addedItem.map(item => item.id ===itemToBeSubstructed.id? {...item,quantity:item.quantity - 1} : item
+                ))
+         
+        
+    }
+
+    return [addedItem]
+}
+
 export default ItemAddition;
