@@ -13,6 +13,7 @@ import {Navigate} from "react-router-dom";
 import {userActionTypes} from "./redux/user/user.types";
 import { selectCurrentUser } from './redux/user/user.selector';
 import CollectionPage from './Pages/CollectionPage/collectionPage.component';
+import CheckoutPage from './Pages/checkoutPage/checkoutPage.component';
 
 
 
@@ -62,6 +63,7 @@ class App extends Component{
     <Route exact path = "/signIn" element = {this.props.currentUser? (<Navigate to="/" />) : <SignInAndSignOutPage/>} />
     <Route path ="/collectionpage" element = {<CollectionPage/>} />
     <Route path = "/shop/:item" element={<CollectionPage />} />
+    <Route path ="/checkoutPage" element = {<CheckoutPage/>} />
     </Routes>
     </div>
   
