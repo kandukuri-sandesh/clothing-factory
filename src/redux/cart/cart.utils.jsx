@@ -1,4 +1,5 @@
 import React from "react";
+import { clearItemFromCart } from "./cart.actions";
 
 const ItemAddition = (addedItem,itemToBeAdded) => {
     if(addedItem.find(item => item.id === itemToBeAdded.id)){
@@ -14,14 +15,15 @@ const ItemAddition = (addedItem,itemToBeAdded) => {
 
 export const ItemSubstruction = (addedItem,itemToBeSubstructed) => {
     if(addedItem.find(item => item.id === itemToBeSubstructed.id)){
+        if(itemToBeSubstructed.quantity>1){
          return (
              addedItem.map(item => item.id ===itemToBeSubstructed.id? {...item,quantity:item.quantity - 1} : item
                 ))
-         
+             }
         
     }
 
-    return [addedItem]
+    return addedItem
 }
 
 export default ItemAddition;
