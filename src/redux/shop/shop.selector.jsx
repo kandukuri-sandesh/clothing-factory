@@ -9,10 +9,15 @@ export const selectShopCollections = createSelector(
     shop => shop.collections
 )
 
+export const selectShopCollectionsPreview = createSelector(
+    [selectShopCollections],
+    collections => Object.keys(collections).map(key => collections[key])
+    
+)
 
 export const selectShopCollectionsItem = memoize((item)=> 
     createSelector(
     [selectShopCollections],
-    collections => collections.find(collection=> collection.routeName === item),
+    collections => collections[item]
     
     ))
