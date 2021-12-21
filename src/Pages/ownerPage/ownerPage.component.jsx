@@ -3,9 +3,20 @@ import "./ownerPage.styles.scss"
 
 const OwnerPage = () => {
    const HandleSubmit = (e) => {
-       alert("Your Query is submitted,we will contact you in 24 hours")
+       
        const value = document.getElementById("input")
        const values = document.getElementById("text-area")
+       console.log(values.value)
+       console.log(value.value)
+       if( values.value === ""  ){
+          alert("Text field cannot be empty")
+          return
+       }
+       else if(Number.isInteger(value.value)){
+          alert("Contact Details cannot be empty")
+          return
+       }
+       alert("Your Query is submitted,we will contact you in 24 hours")
        value.value =""
        values.value =""
        
