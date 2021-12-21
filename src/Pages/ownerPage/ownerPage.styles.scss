@@ -1,0 +1,61 @@
+.box{
+    
+    display: flex;
+    justify-content: center;
+    
+    .contact-box{
+    width: 55%;
+    
+    
+   
+    .contact-us-box{
+        display: flex;
+        
+        text-shadow: 2px 2px 8px #5c5a5a;
+    }
+   
+    .address-email{
+     
+        display: flex;
+        margin-top: 50px;
+            .address-box{
+                
+                
+                width: 300px;
+                display: inline-block;
+            }
+            .email-box{
+              
+                width: 300px;
+                display: inline-block;
+                margin-left: 100px;
+                .phone{
+                    padding-top: 15px;
+                }
+            }
+            } 
+   
+    .button{
+        display: block;
+        background-color: #414741; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 3px;
+        font-size: 20px;
+        margin-top: 20px;
+            &:hover{
+            text-shadow: 2px 2px 8px #424141;
+            background-color: aliceblue;
+            color: rgb(19, 18, 18);
+            }
+    }
+    .input{
+        height: 30px;
+        
+    }
+}
+
+}

@@ -14,6 +14,7 @@ import {userActionTypes} from "./redux/user/user.types";
 import { selectCurrentUser } from './redux/user/user.selector';
 import CollectionPage from './Pages/CollectionPage/collectionPage.component';
 import CheckoutPage from './Pages/checkoutPage/checkoutPage.component';
+import OwnerPage from "./Pages/ownerPage/ownerPage.component";
 
 
 
@@ -64,6 +65,7 @@ class App extends Component{
     <Route path ="/collectionpage" element = {<CollectionPage/>} />
     <Route path = "/shop/:item" element={<CollectionPage />} />
     <Route path ="/checkoutPage" element = {<CheckoutPage/>} />
+    <Route path = "/ownerpage" element = {<OwnerPage/>} />
     </Routes>
     </div>
   

@@ -9,6 +9,7 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component"
 import selectCartHidden from "../../redux/cart/cart.selectors"
 import { selectCurrentUser } from "../../redux/user/user.selector";
 
+
 const Header = ({currentUser,hidden}) => (
     <div className="header" >
     <div className="logo" >
@@ -18,7 +19,9 @@ const Header = ({currentUser,hidden}) => (
     <div className="options" >
      <Link to="/" className = "option"> HOME</Link>
 
-     <Link to="/" className = "option">CONTACT US</Link>
+     <Link to="/shop" className = "option">SHOP</Link>
+
+     <Link to="/ownerpage" className = "option">CONTACT US</Link>
     
      { currentUser ?
         <div className = "option" onClick = {() => auth.signOut()} >SIGN OUT</div> :
