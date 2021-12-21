@@ -23,9 +23,9 @@ const OwnerPage = () => {
      <h1 className="contact-us" >CONTACT US</h1>
      </div>
      <div className="text-area" >
-     <textarea id = "text-area" cols = "50"  autoFocus rows={8} required placeholder="Please specify your concern here..." maxLength={200} />
+     <textarea id = "text-area" cols = "100"  autoFocus rows={10} required placeholder="Please specify your concern here..." maxLength={200} />
      </div>
-     <input id = "input" type={"number"}   placeholder={"Phone:"} className="input" />
+     <input id = "input" type={"number"}   placeholder={"Contact Number"} className="input" />
      <button className="button"   onClick={HandleSubmit}>Submit</button>
      <div className="address-email">
      <div className="address-box" >
@@ -49,6 +49,7 @@ const OwnerPage = () => {
      </div>
      </div>
      </div>
+     
      </div>
      </div>
     
